@@ -1,0 +1,43 @@
+﻿{
+  "name" : "darknight",
+  "version" : "1.0.0",
+  "manifest_version": 2,
+  "description" : "apply darknight css to current page.",
+  "background" : {
+    "scripts" : ["darknight.js"],
+    "persistent" : true
+  },
+  "browser_action" :
+  {
+    "default_icon" : {
+      "19" : "logo.png",
+      "38" : "logo.png"
+    },
+    "default_title" : "Insert darknight CSS",
+    "default_popup" : "popup.html"
+  },
+  "content_security_policy" : "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; img-src *",
+  "permissions" : [
+    "tabs",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "content_scripts" : [
+    {
+      "matches" : [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js" : [
+        "contentscript.js"
+      ],
+      "run_at" : "document_idle",
+      "all_frames" : false
+    }
+  ],
+  "icons" : {
+    "16" : "logo.png",
+    "48" : "logo.png",
+    "128" : "logo.png"
+  }
+}
